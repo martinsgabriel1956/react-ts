@@ -15,10 +15,16 @@ export function App() {
     })
   }
 
+  const handleRemoveTodo = (todoId: string ) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.id !== todoId);
+    })
+  }
+
   return (
     <>
     <NewTodo onAddTodo={handleAddTodo} />
-      <Todos items={todos} />
+      <Todos items={todos} onRemoveTodo={handleRemoveTodo} />
     </>
   );
 }
