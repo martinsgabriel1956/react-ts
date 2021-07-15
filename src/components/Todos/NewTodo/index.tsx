@@ -1,12 +1,12 @@
-import { useRef, FormEvent, FC } from 'react';
+import { useRef, FormEvent, FC, useContext } from 'react';
+
+import { TodosContext } from '../../../context/TodosContext';
 
 import classes from './styles.module.css';
 
-type NewTodoProps = {
-  onAddTodo: (text: string) => void
-}
+export const NewTodo: FC = () => {
+  const { addTodo } = useContext(TodosContext);
 
-export const NewTodo: FC<NewTodoProps> = (props) => {
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
   function handleSubmit(event: FormEvent) {
@@ -15,6 +15,8 @@ export const NewTodo: FC<NewTodoProps> = (props) => {
     const text = todoTextInputRef.current!.value;
 
     if(text.trim().length === 0) return;
+
+    addTodo(text);
   }
 
   return (
