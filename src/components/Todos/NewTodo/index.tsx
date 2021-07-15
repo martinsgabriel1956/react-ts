@@ -1,6 +1,10 @@
-import { useRef, FormEvent } from 'react';
+import { useRef, FormEvent, FC } from 'react';
 
-export const NewTodo = () => {
+type NewTodoProps = {
+  onAddTodo: (text: string) => void
+}
+
+export const NewTodo: FC<NewTodoProps> = (props) => {
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
   function handleSubmit(event: FormEvent) {

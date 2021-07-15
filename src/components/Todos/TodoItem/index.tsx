@@ -1,6 +1,11 @@
 import { FC } from 'react';
 
-export const TodoItem: FC<{ text: string }> = (props) => {
+type TodoItemProps = {
+  text: string;
+}
+
+
+export const TodoItem: FC<TodoItemProps> = (props) => {
   return (
     <>
       <li>{props.text}</li>
